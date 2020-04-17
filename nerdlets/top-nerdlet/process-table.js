@@ -29,6 +29,11 @@ const METRICS = {
     id: 'command',
     name: 'Command',
     fn: 'latest(commandName) as command',
+  },
+  containerid: {
+    id: 'containerid',
+    name: 'ContainerID',
+    fn: 'latest(containerId) as ContainerID',
     align: 'left',
   },
 };
@@ -39,6 +44,7 @@ const COLUMNS = [
   METRICS.res,
   METRICS.virt,
   METRICS.command,
+  METRICS.containerid
 ];
 
 export default class ProcessTable extends React.PureComponent {
@@ -104,6 +110,7 @@ export default class ProcessTable extends React.PureComponent {
         res: bytesToSize(facet.results[3].latest),
         virt: bytesToSize(facet.results[4].latest),
         command: facet.results[5].latest,
+        containerid: facet.results[6].latest
       };
     });
 
